@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html><body>
+<script>
+  // Redirect back into the app (custom scheme)
+  const code = new URLSearchParams(window.location.search).get("code");
+  if (code) {
+    window.location.href = `rideweatherpro://garmin-auth?code=${code}`;
+  }
+</script>
+</body></html>
