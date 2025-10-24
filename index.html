@@ -5,20 +5,93 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RideWeather Pro</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 2rem; background: #fafafa; color: #333; }
-    h1 { color: #007aff; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 2rem;
+      background: #fafafa;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #007aff;
+    }
+    header {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    nav a {
+      margin-right: 1rem;
+      color: #007aff;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    form, .contact-box {
+      background: #f9f9f9;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      max-width: 400px;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.25rem;
+      font-family: inherit;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #007aff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+    button:hover {
+      background-color: #005fd1;
+    }
+    footer {
+      border-top: 1px solid #ddd;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
   </style>
 </head>
 <body>
-  <h1>RideWeather Pro</h1>
-  <p><strong>RideWeather Pro</strong> is an iOS app that helps cyclists plan rides using real-time weather forecasts and adaptive route insights.</p>
+  <header>
+    <h1>RideWeather Pro</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </nav>
+  </header>
 
-  <h2>Company</h2>
-  <p>Developed and published by <strong>Craig Faist</strong>.</p>
+  <main>
+    <h2>About</h2>
+    <p><strong>RideWeather Pro</strong> helps cyclists plan safer, smarter rides by combining real-time weather forecasts, adaptive route pacing, and personalized recommendations — all powered by your favorite fitness platforms like Strava and Garmin Connect.</p>
 
-  <p>Contact: <a href="mailto:support@rideweatherpro.app">support@rideweatherpro.app</a></p>
+    <h2>Contact Us</h2>
+    <div class="contact-box">
+      <p>We’d love to hear from you!</p>
+      <p>
+        <a href="mailto:support@ridepro.app">support@ridepro.app</a>
+      </p>
+      <p><small>Clicking the email link will open your mail app to send us a message directly.</small></p>
+    </div>
 
-  <h2>Privacy Policy</h2>
-  <p>We value your privacy and are committed to protecting your data. See our full <a href="privacy.html">Privacy Policy</a>.</p>
+    <h2>Company</h2>
+    <p>Developed and published by <strong>Craig Faist</strong>.</p>
+    <p>Location: United States</p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 RideWeather Pro. All rights reserved.</p>
+  </footer>
 </body>
 </html>
