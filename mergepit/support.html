@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — MergePit</title>
+  <style>
+    :root {
+      --bg: #f5f2ee;
+      --card: #ffffff;
+      --text-primary: #1c1c1e;
+      --text-secondary: #5c5c5e;
+      --text-tertiary: #a0a0a2;
+      --border: #e5e0d8;
+      --accent: #d6336c;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #171717;
+        --card: #242426;
+        --text-primary: #f5f2ee;
+        --text-secondary: #aeaeb2;
+        --text-tertiary: #636366;
+        --border: #38383a;
+        --accent: #ff6fb5;
+      }
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: ui-rounded, 'SF Pro Rounded', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      padding: 48px 24px 80px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .merge-icon {
+      display: inline-flex;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .merge-icon span {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .merge-icon span:nth-child(1) { background: #ff4d6d; }
+    .merge-icon span:nth-child(2) { background: #ffd23f; }
+    .merge-icon span:nth-child(3) { background: #3fa9f5; }
+    .merge-icon span:nth-child(4) { background: var(--accent); }
+
+    h1 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 40px 0;
+    }
+
+    .contact-card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 40px;
+      border: 1px solid var(--border);
+    }
+
+    .contact-card p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .contact-card a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-card .response-note {
+      font-size: 0.85rem;
+      color: var(--text-tertiary);
+      margin-bottom: 0;
+    }
+
+    h2 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 20px;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq-item {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 22px 24px;
+      border: 1px solid var(--border);
+    }
+
+    .faq-item .question {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .faq-item .answer {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 56px;
+      color: var(--text-tertiary);
+      font-size: 0.8rem;
+    }
+
+    footer a {
+      color: var(--text-tertiary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="merge-icon">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <h1>MergePit</h1>
+      <p class="subtitle">Support</p>
+    </header>
+
+    <div class="contact-card">
+      <p>Have a question, found a bug, or just want to say hello? We'd love to hear from you.</p>
+      <p>Reach us at <a href="mailto:support@ridepro.app">support@ridepro.app</a></p>
+      <p class="response-note">We typically respond within one to two business days.</p>
+    </div>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <p class="question">How do I play?</p>
+        <p class="answer">Drag to aim and let go to drop a piece into the pit. When two pieces of the same color touch, they merge into the next tier up. Keep merging to climb the tiers — but don't let the pile settle above the line at the top, or the run ends.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="question">What's the difference between Timed and Relaxed?</p>
+        <p class="answer">In Timed mode, pieces drop on a countdown that tightens as your score grows — this is the competitive mode, and its scores go to the Game Center leaderboards. Relaxed mode has no countdown; take all the time you want. Relaxed bests are kept on your device and don't appear on the leaderboards.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="question">Do I need an account to play?</p>
+        <p class="answer">No. There are no accounts and no sign-ups. Leaderboards and achievements use Apple's Game Center, which is entirely optional — if you choose not to sign in, the game is still fully playable.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="question">My scores aren't showing on the leaderboard.</p>
+        <p class="answer">Two things to check: make sure you're signed into Game Center (open the Settings app → Game Center), and make sure you're playing Timed mode. Only Timed scores are submitted — Relaxed mode keeps a personal best on your device only.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="question">How do the leaderboards work?</p>
+        <p class="answer">There are two: an all-time board, and a weekly board that resets regularly so there's always a fresh top to chase. Tap Leaderboards on the main menu to see where you stand.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="question">Can I turn off the sound or haptics?</p>
+        <p class="answer">Yes. Tap Settings on the main menu to toggle Sound and Haptics independently. Sound also follows your device's ring/silent switch and won't interrupt your music.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="question">Does MergePit collect any of my data?</p>
+        <p class="answer">No. MergePit makes no network calls of its own and collects no personal data. Your scores, stats, and settings stay on your device. Game Center features are handled by Apple under Apple's privacy policy.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="question">Does it work on iPad?</p>
+        <p class="answer">Yes. MergePit runs on iPhone and iPad, with full support for every iPad orientation. The pit is the same size on every device, so the leaderboards stay fair.</p>
+      </div>
+
+    </div>
+
+    <hr class="divider">
+
+    <footer>
+      <p>© 2026 RidePro &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+
+  </div>
+</body>
+</html>
