@@ -2,7 +2,7 @@
   "applinks": {
     "details": [
       {
-        "appIDs": ["TEAMID.app.ridepro.mergepit"],
+        "appIDs": ["DT58WA8N32.app.ridepro.mergepit"],
         "components": [
           {
             "/": "/mergepit/daily*",
