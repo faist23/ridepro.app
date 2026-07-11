@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#14131f">
   <title>MergePit Daily Challenge</title>
 
   <!-- Link-preview metadata, so a shared challenge looks good in Messages/social. -->
@@ -15,25 +16,274 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <style>
+    /* Twilight palette, matched to the app's menu scene (TwilightBackdrop +
+       MenuScene jellies). The app pins dark mode, so this page does too. */
     :root {
-      --bg: #f5f2ee; --card: #ffffff; --text-primary: #1c1c1e;
-      --text-secondary: #5c5c5e; --text-tertiary: #a0a0a2; --border: #e5e0d8; --accent: #d6336c;
+      --bg-center: #292638;   /* lit indigo centre */
+      --bg-mid: #14131f;
+      --bg-edge: #0a090f;     /* deep edge */
+      --card: rgba(255, 255, 255, 0.055);
+      --border: rgba(255, 255, 255, 0.09);
+      --text-primary: #f3f1fa;
+      --text-secondary: rgba(226, 222, 240, 0.74);
+      --text-tertiary: rgba(200, 183, 235, 0.5);
+      --lavender: #c8b7eb;
+      --glow: rgba(122, 98, 217, 0.45);
+      --daily-orange: #ff9f0a; /* the app's Daily Challenge button tint */
     }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #171717; --card: #242426; --text-primary: #f5f2ee;
-        --text-secondary: #aeaeb2; --text-tertiary: #636366; --border: #38383a; --accent: #ff6fb5;
-      }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { color-scheme: dark; }
+
     body {
-      background: var(--bg); color: var(--text-primary);
+      background-color: var(--bg-mid);
+      color: var(--text-primary);
       font-family: ui-rounded, 'SF Pro Rounded', system-ui, -apple-system, 'Segoe UI', sans-serif;
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 48px 24px;
     }
-    .container { max-width: 460px; text-align: center; }
-    .merge-icon { display: inline-flex; gap: 6px; margin-bottom: 22px; }
+
+    /* The twilight vignette lives on a fixed pseudo-element because
+       background-attachment: fixed is unreliable on iOS Safari. */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(120% 90% at 50% 25%,
+        var(--bg-center), var(--bg-mid) 55%, var(--bg-edge));
+    }
+
+    ::selection { background: rgba(122, 98, 217, 0.5); }
+
+    a:focus-visible {
+      outline: 2px solid var(--lavender);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .container {
+      max-width: 460px;
+      text-align: center;
+    }
+
+    /* The resting jellies from the app's menu screen: same tiers, order,
+       tilts, and size rhythm (green, orange, indigo, red, yellow). */
+    .jellies {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 2px;
+    }
+
+    .jelly {
+      width: var(--d);
+      height: var(--d);
+      rotate: var(--tilt);
+      transition: translate 0.25s ease;
+    }
+
+    .jelly:hover { translate: 0 -3px; }
+    .jelly:active { translate: 0 2px; }
+
+    .jelly .body {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0) 58%),
+        var(--fill);
+      border: 2px solid var(--rim);
+      box-shadow: inset 0 calc(var(--d) / -10) calc(var(--d) / 5) rgba(0, 0, 0, 0.28);
+      transform-origin: 50% 85%;
+      animation: breathe 2.2s ease-in-out calc(var(--i) * 0.4s) infinite alternate;
+    }
+
+    @keyframes breathe {
+      from { transform: scale(1); }
+      to   { transform: scale(1.03); }
+    }
+
+    .jelly .eyes {
+      position: absolute;
+      left: 50%;
+      top: 22%;
+      translate: -50% 0;
+      display: flex;
+      gap: calc(var(--d) * 0.1);
+      animation: blink 4.6s ease-in-out calc(var(--i) * 0.7s) infinite;
+    }
+
+    @keyframes blink {
+      0%, 90%, 100% { transform: scaleY(1); }
+      93%, 96%      { transform: scaleY(0.1); }
+    }
+
+    .jelly .eyes i {
+      position: relative;
+      width: calc(var(--d) * 0.2);
+      height: calc(var(--d) * 0.22);
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    .jelly .eyes i::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 58%;
+      translate: -50% -50%;
+      width: 55%;
+      height: 52%;
+      background: var(--rim);
+      border-radius: 50%;
+    }
+
+    .jelly .mouth {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      translate: -50% 0;
+      width: calc(var(--d) * 0.26);
+      height: calc(var(--d) * 0.18);
+      border: 2px solid transparent;
+      border-bottom-color: var(--rim);
+      border-radius: 50%;
+    }
+
+    .floor {
+      height: 1px;
+      max-width: 340px;
+      margin: 0 auto 26px;
+      background: linear-gradient(90deg, transparent, rgba(200, 183, 235, 0.28), transparent);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      /* Match the app: breathing stops, blinks stay (facial, not motion). */
+      .jelly .body { animation: none; }
+      .jelly, .jelly:hover, .jelly:active { translate: none; transition: none; }
+    }
+
+    h1 {
+      font-size: clamp(2rem, 8vw, 2.6rem);
+      font-weight: 900;
+      letter-spacing: 0.01em;
+      background: linear-gradient(180deg, #ffffff, var(--lavender));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 4px 16px var(--glow));
+      margin-bottom: 6px;
+    }
+
+    .tagline {
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-tertiary);
+      margin-bottom: 28px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px 26px;
+      margin-bottom: 24px;
+    }
+
+    .card p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    /* The same orange as the app's Daily Challenge button, with dark text
+       for contrast on the web. */
+    .cta {
+      display: inline-block;
+      background: var(--daily-orange);
+      color: #201302;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 14px 30px;
+      border-radius: 999px;
+      box-shadow: 0 4px 20px rgba(255, 159, 10, 0.3);
+    }
+
+    .cta:hover { opacity: 0.9; }
+
+    .note {
+      margin-top: 18px;
+      font-size: 0.85rem;
+      color: var(--text-tertiary);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+    }
+
+    footer a {
+      color: var(--text-tertiary);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="jellies" aria-hidden="true">
+      <div class="jelly" style="--d: 53px; --fill: #40cc3d; --rim: #237022; --tilt: -6deg; --i: 0">
+        <div class="body"><div class="eyes"><i></i><i></i></div><div class="mouth"></div></div>
+      </div>
+      <div class="jelly" style="--d: 36px; --fill: #fa8b26; --rim: #894d15; --tilt: 7deg; --i: 1">
+        <div class="body"><div class="eyes"><i></i><i></i></div><div class="mouth"></div></div>
+      </div>
+      <div class="jelly" style="--d: 78px; --fill: #2b32d9; --rim: #181c77; --tilt: 0deg; --i: 2">
+        <div class="body"><div class="eyes"><i></i><i></i></div><div class="mouth"></div></div>
+      </div>
+      <div class="jelly" style="--d: 30px; --fill: #f24949; --rim: #852828; --tilt: -5deg; --i: 3">
+        <div class="body"><div class="eyes"><i></i><i></i></div><div class="mouth"></div></div>
+      </div>
+      <div class="jelly" style="--d: 44px; --fill: #fae319; --rim: #897d0e; --tilt: 6deg; --i: 4">
+        <div class="body"><div class="eyes"><i></i><i></i></div><div class="mouth"></div></div>
+      </div>
+    </div>
+    <div class="floor"></div>
+    <h1>MergePit Daily</h1>
+    <p class="tagline">Same pit · every day</p>
+
+    <div class="card">
+      <p>Today's pit is the same for everyone. Drop, merge, and chase the top of
+      the daily leaderboard — then dare a friend to beat your score.</p>
+    </div>
+
+    <a class="cta" href="https://apps.apple.com/app/mergepit/id6779675985">Get MergePit</a>
+    <p class="note">Already have the app? This link opens today's challenge.</p>
+
+    <footer>
+      © 2026 RidePro &nbsp;·&nbsp;
+      <a href="/mergepit/support.html">Support</a> &nbsp;·&nbsp;
+      <a href="/mergepit/privacy.html">Privacy</a>
+    </footer>
+  </div>
+</body>
+</html>
     .merge-icon span { width: 24px; height: 24px; border-radius: 50%; }
     .merge-icon span:nth-child(1) { background: #ff4d6d; }
     .merge-icon span:nth-child(2) { background: #ffd23f; }
