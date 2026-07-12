@@ -175,6 +175,537 @@
   .tracker{
     background:var(--ink);color:var(--paper);
     border:2px solid var(--ink);box-shadow:8px 8px 0 var(--armour);
+    padding:28px 30px;
+  }
+  .tracker h3{font-family:'Alfa Slab One',serif;font-weight:400;font-size:1.6rem;margin-bottom:8px}
+  .tracker p{color:#CFC8B8;max-width:52ch}
+  .btn{
+    display:inline-block;margin-top:16px;background:var(--armour);color:var(--ink);
+    font-family:'Oswald',sans-serif;font-weight:600;font-size:.9rem;letter-spacing:.18em;
+    text-transform:uppercase;text-decoration:none;padding:12px 22px;border:2px solid var(--armour);
+  }
+  .btn:hover{background:transparent;color:var(--armour)}
+
+  /* ---------- lunch ---------- */
+  .lunch{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:10px}
+  .dish{border:2px solid var(--ink);background:#FBF6EA;padding:18px;box-shadow:4px 4px 0 var(--paper-deep)}
+  .dish .pick{font-family:'Oswald',sans-serif;font-weight:600;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--up-red)}
+  .dish h4{font-family:'Alfa Slab One',serif;font-weight:400;font-size:1.15rem;margin:6px 0 4px}
+  .dish .where{font-family:'Oswald',sans-serif;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px}
+  .dish p{font-size:.96rem;color:var(--ink-soft)}
+
+  /* ---------- facts strip ---------- */
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:2px solid var(--ink);background:var(--ink);gap:2px;box-shadow:6px 6px 0 var(--paper-deep)}
+  .fact{background:#FBF6EA;padding:18px 16px;text-align:center}
+  .fact .num{font-family:'Alfa Slab One',serif;font-size:1.7rem;color:var(--up-red)}
+  .fact .lbl{font-family:'Oswald',sans-serif;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px}
+
+  /* ---------- safety ---------- */
+  .rules{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:10px}
+  .rule-card{border-left:4px solid var(--up-red);background:#FBF6EA;padding:14px 16px}
+  .rule-card b{font-weight:600}
+
+
+  /* ---------- service record timeline ---------- */
+  .srec{margin-top:30px;border-left:3px solid var(--ink);padding-left:0;list-style:none}
+  .srec li{position:relative;padding:0 0 26px 34px}
+  .srec li:last-child{padding-bottom:4px}
+  .srec li::before{
+    content:"";position:absolute;left:-10px;top:6px;width:14px;height:14px;
+    background:var(--paper);border:3px solid var(--ink);border-radius:50%;
+  }
+  .srec li.mark::before{background:var(--up-red);border-color:var(--up-red)}
+  .srec .yr{
+    font-family:'Alfa Slab One',serif;font-size:1.15rem;color:var(--up-red);
+    display:block;line-height:1.2;
+  }
+  .srec li p{color:var(--ink-soft);max-width:68ch}
+  .srec li p b{color:var(--ink);font-weight:600}
+
+  footer{
+    background:var(--ink);color:var(--mist);margin-top:40px;
+    border-top:6px solid var(--armour);padding:30px 0;
+    font-family:'Oswald',sans-serif;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+  }
+  footer a{color:var(--armour);text-decoration:none}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  @media (max-width:820px){
+    .roster,.lunch{grid-template-columns:1fr}
+    .two-col{grid-template-columns:1fr}
+    .facts{grid-template-columns:repeat(2,1fr)}
+    .rules{grid-template-columns:1fr}
+    .figure img{background:#5B564E;}
+  .figure img.x{height:220px}
+  }
+  @media print{
+    .hero{background:#2A2724}
+  .hero img{height:280px}
+    .tracker{box-shadow:none}
+    a{color:inherit;text-decoration:none}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .car,.dish,.figure{transition:transform .18s ease}
+    .car:hover,.dish:hover{transform:translate(-2px,-2px)}
+  }
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <div class="mast-top">
+      <span>Family Timetable No. 1</span>
+      <span>Monday <span class="dot">●</span> July 13, 2026 <span class="dot">●</span> Westbound</span>
+    </div>
+  </div>
+  <div class="hero">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Big_Boy_4014_In_Operation.jpg?width=1800" alt="Union Pacific Big Boy No. 4014 under steam">
+    <div class="hero-shade"></div>
+    <div class="hero-credit"><a href="https://commons.wikimedia.org/wiki/File:Big_Boy_4014_In_Operation.jpg">Photo: Wikimedia Commons · CC</a></div>
+    <div class="wrap hero-copy">
+      <span class="hero-kicker">Union Pacific No. 4014 · Coast-to-Coast Tour</span>
+      <h1>The 4014 Special</h1>
+      <p class="hero-sub">One day. Three cars. The world's largest operating steam locomotive, twice — rolling over the Cuyahoga, then up close at the Rocky River whistle stop.</p>
+    </div>
+  </div>
+</header>
+
+<div class="wheels" aria-hidden="true">
+  <svg viewBox="0 0 340 30" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="currentColor" stroke-width="2.4">
+      <circle cx="10" cy="17" r="6"/><circle cx="26" cy="17" r="6"/>
+      <circle cx="52" cy="14" r="10"/><circle cx="76" cy="14" r="10"/><circle cx="100" cy="14" r="10"/><circle cx="124" cy="14" r="10"/>
+      <circle cx="158" cy="14" r="10"/><circle cx="182" cy="14" r="10"/><circle cx="206" cy="14" r="10"/><circle cx="230" cy="14" r="10"/>
+      <circle cx="256" cy="17" r="6"/><circle cx="272" cy="17" r="6"/>
+    </g>
+  </svg>
+  <span class="cap">4 · 8 · 8 · 4</span>
+</div>
+
+<!-- ================= TIMETABLE ================= -->
+<section id="timetable">
+  <div class="wrap">
+    <span class="eyebrow">The day at a glance</span>
+    <h2>Chase-Day Timetable</h2>
+    <p class="lede">Everything before 1:00 PM flexes with the train. Everything after 1:00 PM is fixed — Union Pacific has 4014 arriving at the Rocky River depot at 1:00 sharp and departing at 1:30. Watch the live tracker and adjust.</p>
+    <div class="tt" style="margin-top:24px">
+      <div class="tt-head"><span><b>Galloway → Cleveland → Rocky River → Home</b></span><span>All times Eastern</span></div>
+      <table class="sched">
+        <thead><tr><th>Time</th><th>Movement</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="time">8:15 AM<small>Depart</small></td>
+            <td class="what"><b>Leave Galloway.</b> I-70 E → I-71 N, about 145 miles to Tremont. <span class="note">Roughly 2¼ hours with a fuel/restroom stop. Leaving at 8:00 costs nothing and buys calm if anyone prefers extra cushion.</span></td>
+          </tr>
+          <tr>
+            <td class="time">9:00 AM<small>Train</small></td>
+            <td class="what"><b>Meanwhile: 4014 departs Conneaut, westbound.</b> <span class="note">No public access at the departure point. The chase clock starts here.</span></td>
+          </tr>
+          <tr>
+            <td class="time">10:45 AM<small>Arrive</small></td>
+            <td class="what"><b>Park in Tremont &amp; walk to Sokolowski's Overlook.</b> <span class="note">Time to stake out sight lines and set up cameras before the action.</span></td>
+          </tr>
+          <tr>
+            <td class="time">~11:45 AM<br>–12:40 PM<small>Est. window</small></td>
+            <td class="what"><b>Big Boy crosses the Cuyahoga River.</b> <span class="note">Estimated — steam moves crawl through metro trackage. The later it runs here, the tighter the hop to Rocky River. Keep the tracker open.</span></td>
+          </tr>
+          <tr>
+            <td class="time">+15–20<small>min transfer</small></td>
+            <td class="what"><b>Roll to Rocky River immediately after it passes.</b> Abbey Ave → I-90 W → Exit 162 (Hilliard Blvd), about 11 miles. <span class="note">Even a 12:40 crossing still gets you there for most of the stationary visit.</span></td>
+          </tr>
+          <tr class="anchor">
+            <td class="time">1:00 PM<small>Fixed</small></td>
+            <td class="what"><b>Whistle stop — 4014 arrives at the Rocky River depot.</b> <span class="note">On display, stationary, until departure. Expect a serious crowd.</span></td>
+          </tr>
+          <tr class="anchor">
+            <td class="time">1:30 PM<small>Fixed</small></td>
+            <td class="what"><b>4014 departs westbound.</b> <span class="note">If watching it pull out matters to you, stake a departure-side view early.</span></td>
+          </tr>
+          <tr>
+            <td class="time">1:45 PM<small>Lunch</small></td>
+            <td class="what"><b>Lunch in Rocky River.</b> <span class="note">Three picks below — all within five minutes of the depot.</span></td>
+          </tr>
+          <tr>
+            <td class="time">3:00 PM<small>Depart</small></td>
+            <td class="what"><b>Head home.</b> I-90 E → I-71 S, straight through, about 150 miles. <span class="note">No stops planned — home early.</span></td>
+          </tr>
+          <tr>
+            <td class="time">5:30–6:00 PM<small>Arrive</small></td>
+            <td class="what"><b>Back in Galloway.</b></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="tt-foot">Schedule subject to change — 4014 may run ahead of or behind the posted times. The tracker is truth.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ROSTER ================= -->
+<section id="roster">
+  <div class="wrap">
+    <span class="eyebrow">The crew</span>
+    <h2>Consist &amp; Roster</h2>
+    <div class="roster">
+      <div class="car"><span class="tag">Car 1</span><p><b>Craig &amp; Lori</b></p><p class="from">Departing Galloway</p></div>
+      <div class="car"><span class="tag">Car 2</span><p><b>Cody, Jillian &amp; Jimmie</b></p><p class="from">Itinerary architect aboard</p></div>
+      <div class="car"><span class="tag">Car 3</span><p><b>Cory &amp; Jacob</b></p><p class="from">Departing Columbus</p></div>
+    </div>
+    <div class="callout">
+      <div class="ttl">One-car option worth discussing</div>
+      <p>We may benefit if one car skips the first stop and heads straight to Rocky River around noon — parking near the depot will be the scarcest resource of the day, and an early car could claim spaces at Beachcliff or Heinen's and hold a front-row spot for everyone at the whistle stop. The trade-off is missing the river crossing. Something to decide as a group.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STOP 1 ================= -->
+<section id="stop1">
+  <div class="wrap">
+    <span class="eyebrow">Rendezvous No. 1 · ETA 11:00–11:15 AM</span>
+    <div class="stophead"><span class="stopnum">1</span><h2 style="margin:0">Sokolowski's Overlook</h2></div>
+    <p class="addr">1203 University Rd, Cleveland, OH 44113 · Bike path along the ridge opposite the Cuyahoga River</p>
+    <div class="two-col">
+      <div>
+        <p class="lede">The objective: 4014 in motion, crossing the Cuyahoga with the Cleveland skyline behind it. The overlook sits on the Tremont ridge with a clear view across the river valley — one of the best free vantage points in the city.</p>
+        <div class="cards">
+          <div class="pcard"><b>Side Yard Park lot</b><span>1370 Abbey Ave, Cleveland — closest walk to the overlook</span></div>
+          <div class="pcard"><b>Tremont City Side Ballroom lot</b><span>2187 W 4th St, Cleveland, OH 44113</span></div>
+          <div class="pcard"><b>Street parking</b><span>Friendly Tremont neighborhood streets near the path</span></div>
+        </div>
+        <div class="tip">
+          <div class="ttl">Timing reality check</div>
+          <p>4014's Rocky River arrival is pinned at 1:00 PM, and downtown is only ~8 rail miles east of the depot — so the Cuyahoga crossing likely lands closer to noon than to 10:30. Arriving by 11:15 is still right (better an hour early than five minutes late). Bring patience, water, and shade.</p>
+        </div>
+      </div>
+      <figure class="figure">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/UP_4014_Unassisted_On_Wasatch_Grade.jpg?width=1200" alt="Big Boy 4014 under way at speed">
+        <figcaption>4014 in motion — the sight we're here for · <a href="https://commons.wikimedia.org/wiki/File:UP_4014_Unassisted_On_Wasatch_Grade.jpg">Wikimedia Commons · CC</a></figcaption>
+      </figure>
+    </div>
+
+    <div class="mapbox">
+      <svg viewBox="0 0 960 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schematic map of 4014's westbound route along Lake Erie from Conneaut to Rocky River">
+        <!-- lake band -->
+        <path d="M0,58 C160,40 320,66 480,52 C640,38 800,62 960,48 L960,0 L0,0 Z" fill="#B9C9CE" opacity=".55"/>
+        <text x="480" y="30" text-anchor="middle" font-family="Oswald,sans-serif" font-size="13" letter-spacing="4" fill="#5E7076">LAKE ERIE</text>
+        <!-- rail line -->
+        <line x1="60" y1="130" x2="900" y2="130" stroke="#1E1C1A" stroke-width="4"/>
+        <g stroke="#1E1C1A" stroke-width="2">
+          <line x1="80" y1="124" x2="80" y2="136"/><line x1="130" y1="124" x2="130" y2="136"/><line x1="180" y1="124" x2="180" y2="136"/><line x1="230" y1="124" x2="230" y2="136"/><line x1="280" y1="124" x2="280" y2="136"/><line x1="330" y1="124" x2="330" y2="136"/><line x1="380" y1="124" x2="380" y2="136"/><line x1="430" y1="124" x2="430" y2="136"/><line x1="480" y1="124" x2="480" y2="136"/><line x1="530" y1="124" x2="530" y2="136"/><line x1="580" y1="124" x2="580" y2="136"/><line x1="630" y1="124" x2="630" y2="136"/><line x1="680" y1="124" x2="680" y2="136"/><line x1="730" y1="124" x2="730" y2="136"/><line x1="780" y1="124" x2="780" y2="136"/><line x1="830" y1="124" x2="830" y2="136"/><line x1="880" y1="124" x2="880" y2="136"/>
+        </g>
+        <!-- direction arrow -->
+        <g fill="#BA0C2F">
+          <path d="M300,96 L268,96 L268,90 L252,101 L268,112 L268,106 L300,106 Z"/>
+          <text x="308" y="107" font-family="Oswald,sans-serif" font-size="13" letter-spacing="2" fill="#BA0C2F">WESTBOUND</text>
+        </g>
+        <!-- stations, west (left) to east (right) -->
+        <g font-family="Oswald,sans-serif">
+          <circle cx="110" cy="130" r="9" fill="#BA0C2F" stroke="#1E1C1A" stroke-width="2.5"/>
+          <text x="110" y="162" text-anchor="middle" font-size="14" font-weight="600" fill="#1E1C1A">ROCKY RIVER</text>
+          <text x="110" y="180" text-anchor="middle" font-size="12" fill="#4A453E">ARR 1:00 · DEP 1:30 PM</text>
+
+          <circle cx="285" cy="130" r="9" fill="#FFB512" stroke="#1E1C1A" stroke-width="2.5"/>
+          <text x="285" y="162" text-anchor="middle" font-size="14" font-weight="600" fill="#1E1C1A">CUYAHOGA CROSSING</text>
+          <text x="285" y="180" text-anchor="middle" font-size="12" fill="#4A453E">EST. 11:45 AM – 12:40 PM</text>
+
+          <circle cx="520" cy="130" r="6" fill="#F4EDDE" stroke="#1E1C1A" stroke-width="2.5"/>
+          <text x="520" y="162" text-anchor="middle" font-size="13" fill="#4A453E">PAINESVILLE</text>
+
+          <circle cx="700" cy="130" r="6" fill="#F4EDDE" stroke="#1E1C1A" stroke-width="2.5"/>
+          <text x="700" y="162" text-anchor="middle" font-size="13" fill="#4A453E">ASHTABULA</text>
+
+          <circle cx="870" cy="130" r="9" fill="#1E1C1A" stroke="#1E1C1A" stroke-width="2.5"/>
+          <text x="870" y="162" text-anchor="middle" font-size="14" font-weight="600" fill="#1E1C1A">CONNEAUT</text>
+          <text x="870" y="180" text-anchor="middle" font-size="12" fill="#4A453E">DEP 9:00 AM</text>
+        </g>
+      </svg>
+      <div class="maplabel">Schematic — not to scale · 4014 runs the Lake Erie shore west from Conneaut, through downtown Cleveland, to the Rocky River depot</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRACKER ================= -->
+<section id="tracker">
+  <div class="wrap">
+    <div class="tracker">
+      <div>
+        <span class="eyebrow" style="color:var(--armour)">The most important link of the day</span>
+        <h3>Union Pacific Live Steam Tracker</h3>
+        <p>4014's real-time position on the map, straight from UP. Everything in this plan flexes around where the train actually is — check it on the drive up, at the overlook, and before committing to the transfer.</p>
+        <a class="btn" href="https://www.up.com/about-us/history/steam/track">Track 4014 Live →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STOP 2 ================= -->
+<section id="stop2">
+  <div class="wrap">
+    <span class="eyebrow">Rendezvous No. 2 · Whistle stop 1:00–1:30 PM</span>
+    <div class="stophead"><span class="stopnum">2</span><h2 style="margin:0">Rocky River Rail Depot</h2></div>
+    <p class="addr">19060 Depot St, Rocky River, OH 44116 · Former Nickel Plate station</p>
+    <div class="two-col">
+      <div>
+        <p class="lede">The objective: 4014 up close and stationary — 133 feet of it — then watching it pull out under steam at 1:30. The city has warned that parking and space will be limited, and the June stops in Lorain and Euclid drew thousands.</p>
+        <div class="cards">
+          <div class="pcard"><b>Beachcliff Market Square lot</b><span>19300 Detroit Rd, Rocky River — large shopping-center lot</span></div>
+          <div class="pcard"><b>Heinen's Grocery lot</b><span>19219 Detroit Rd, Rocky River — crossing Detroit Rd on foot required</span></div>
+        </div>
+        <div class="tip">
+          <div class="ttl">Crowd craft</div>
+          <p>Arriving right at 1:00 still buys nearly the full half-hour with the locomotive. Pick your departure-side viewing spot as soon as you arrive — the pull-out at 1:30, whistle and all, is the moment everyone will crowd toward at the last minute.</p>
+        </div>
+      </div>
+      <figure class="figure">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Union_Pacific_Big_Boy_No._4014_in_Hearne,_Texas_-_October_2024_-_01.jpg?width=1200" alt="Big Boy 4014 stationary at a whistle stop with visitors">
+        <figcaption>4014 holding at a whistle stop, 2024 tour · <a href="https://commons.wikimedia.org/wiki/File:Union_Pacific_Big_Boy_No._4014_in_Hearne,_Texas_-_October_2024_-_01.jpg">David Rives · CC BY 2.0</a></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LUNCH ================= -->
+<section id="lunch">
+  <div class="wrap">
+    <span class="eyebrow">1:45 PM · Dining car</span>
+    <h2>Lunch in Rocky River</h2>
+    <p class="lede">All three are within about five minutes of the depot. If the first pick is mobbed with fellow train chasers, fall back down the list.</p>
+    <div class="lunch">
+      <div class="dish">
+        <span class="pick">First pick</span>
+        <h4>Bearden's</h4>
+        <div class="where">19985 Lake Rd · Rocky River</div>
+        <p>An old-school burger drive-in institution since 1948 — famous for burgers with peanut sauce and thick shakes. Thematically perfect for a steam-train day.</p>
+      </div>
+      <div class="dish">
+        <span class="pick">Lighter option</span>
+        <h4>Herb'n Twine</h4>
+        <div class="where">Detroit Rd · Rocky River</div>
+        <p>Craft sandwiches on house-baked bread. The move if the group wants something quicker and lighter after standing in the July sun.</p>
+      </div>
+      <div class="dish">
+        <span class="pick">Fallback</span>
+        <h4>Danny Boy's</h4>
+        <div class="where">Center Ridge Rd · Rocky River</div>
+        <p>Family Italian — pizza, pasta, salads — with room for a party of seven. A reliable landing spot if the crowds swamp the first two.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT 4014 ================= -->
+<section id="about">
+  <div class="wrap">
+    <span class="eyebrow">What we're chasing</span>
+    <h2>About No. 4014</h2>
+    <p class="lede">Twenty-five Big Boys were built. Eight survive. Exactly one moves under its own steam — and Monday it comes to us. The service record:</p>
+    <ol class="srec">
+      <li>
+        <span class="yr">November 1941</span>
+        <p><b>Delivered new from the American Locomotive Company</b> in Schenectady, New York — weeks before Pearl Harbor. The 4-8-8-4s were designed for one job: hauling heavy freight over the steep Wasatch grade between Ogden, Utah and Green River, Wyoming without the helper engines that had slowed traffic for decades. Twenty-five were built across two orders.</p>
+      </li>
+      <li>
+        <span class="yr">1941–1961</span>
+        <p><b>Two decades of mountain freight.</b> On most of the Overland Route a Big Boy could move roughly 6,000 tons unassisted. A crew supposedly chalked "Big Boy" on an unfinished locomotive at the ALCO works, and the name stuck. Dieselization ended the era: 4014 made its last revenue run and was retired on December 7, 1961.</p>
+      </li>
+      <li>
+        <span class="yr">1962</span>
+        <p><b>Donated to the Railway &amp; Locomotive Historical Society</b> and placed on static display at the RailGiants Train Museum at the Fairplex in Pomona, California — where it sat, silent, for over half a century while most of its siblings went to scrap.</p>
+      </li>
+      <li>
+        <span class="yr">2013</span>
+        <p><b>Union Pacific bought it back</b> and moved it some 1,200 miles home to the Cheyenne, Wyoming steam shop — the start of one of the most ambitious locomotive restorations ever attempted.</p>
+      </li>
+      <li>
+        <span class="yr">2014–2019</span>
+        <p><b>The restoration.</b> Roughly five years of work: flues, bearings, valves, and brakes rebuilt or replaced, wheelsets turned, and the headline change — conversion from coal to oil firing, which UP had tried and failed on a Big Boy back in 1946.</p>
+      </li>
+      <li>
+        <span class="yr">May 2019</span>
+        <p><b>Back under steam after 58 dormant years</b> — reborn in time for the 150th anniversary of the Transcontinental Railroad's completion at Promontory Summit, and reclaiming the title of the world's largest operational steam locomotive.</p>
+      </li>
+      <li>
+        <span class="yr">2026</span>
+        <p><b>The coast-to-coast tour for America's 250th</b> — including the Big Boy's first-ever visit to the Northeast over Norfolk Southern rails, and a June reunion at Steamtown in Scranton with sister Big Boy No. 4012. Now it's working its way back west along the Lake Erie shore.</p>
+      </li>
+      <li class="mark">
+        <span class="yr">July 13, 2026</span>
+        <p><b>Conneaut → Cleveland → Rocky River.</b> Our day.</p>
+      </li>
+    </ol>
+    <div class="facts" style="margin-top:30px">
+      <div class="fact"><div class="num">132′ 10″</div><div class="lbl">Length, engine + tender</div></div>
+      <div class="fact"><div class="num">1.2M lbs</div><div class="lbl">Weight in working order</div></div>
+      <div class="fact"><div class="num">1 of 25</div><div class="lbl">Built · the only one operating</div></div>
+      <div class="fact"><div class="num">4-8-8-4</div><div class="lbl">Wheel arrangement</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SAFETY ================= -->
+<section id="safety">
+  <div class="wrap">
+    <span class="eyebrow">Rule book</span>
+    <h2>Safety Notes</h2>
+    <div class="rules">
+      <div class="rule-card"><b>Stay back 25 feet</b> from all tracks — that includes tripods and phones on selfie sticks. It applies at the overlook and the depot alike.</div>
+      <div class="rule-card"><b>Always expect a train.</b> These are active lines; never assume a track is quiet just because 4014 hasn't arrived yet.</div>
+      <div class="rule-card"><b>No trespassing</b> on tracks, trestles, or railroad right-of-way — the overlook and depot viewing areas are the legal vantage points.</div>
+      <div class="rule-card"><b>Don't pace the train</b> while driving the transfer to Rocky River. It'll be there, stationary, for a full half hour.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>The 4014 Special · Family Timetable · July 13, 2026</span>
+    <span>Schedule: <a href="https://www.up.com/about-us/history/steam/schedule">up.com/steam/schedule</a> · Tracker: <a href="https://www.up.com/about-us/history/steam/track">up.com/steam/track</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
+    font-family:'Oswald',sans-serif;font-weight:600;
+    font-size:.76rem;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--up-red);
+  }
+  h2{
+    font-family:'Alfa Slab One',serif;font-weight:400;
+    font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.12;
+    margin:.35rem 0 1rem;
+  }
+  .lede{font-size:1.12rem;color:var(--ink-soft);max-width:62ch}
+
+  /* ---------- masthead ---------- */
+  header.mast{
+    background:var(--ink);color:var(--paper);
+    border-bottom:6px solid var(--armour);
+  }
+  .mast-top{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:14px 0;gap:12px;
+    font-family:'Oswald',sans-serif;font-size:.78rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--mist);
+    border-bottom:1px solid #3a3733;
+  }
+  .mast-top .dot{color:var(--armour)}
+  .hero{position:relative;overflow:hidden}
+  .hero{background:#2A2724}
+  .hero img{width:100%;height:min(62vh,560px);object-fit:cover;object-position:center 62%;filter:saturate(.92)}
+  .hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,28,26,.25) 0%,rgba(30,28,26,0) 35%,rgba(30,28,26,.88) 100%)}
+  .hero-copy{position:absolute;left:0;right:0;bottom:0;padding:30px 0 26px}
+  .hero-kicker{
+    display:inline-block;background:var(--armour);color:var(--ink);
+    font-family:'Oswald',sans-serif;font-weight:600;font-size:.8rem;
+    letter-spacing:.22em;text-transform:uppercase;padding:5px 12px;margin-bottom:14px;
+  }
+  h1{
+    font-family:'Alfa Slab One',serif;font-weight:400;color:var(--paper);
+    font-size:clamp(2.3rem,7vw,4.6rem);line-height:1.02;text-shadow:0 2px 18px rgba(0,0,0,.45);
+  }
+  .hero-sub{
+    color:#E8E0CE;font-size:clamp(1rem,2.2vw,1.25rem);margin-top:12px;max-width:56ch;
+  }
+  .hero-credit{position:absolute;top:12px;right:16px;font-family:'Oswald',sans-serif;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,237,222,.75)}
+  .hero-credit a{color:inherit;text-decoration:none;border-bottom:1px dotted rgba(244,237,222,.5)}
+
+  /* ---------- wheel divider (4-8-8-4) ---------- */
+  .wheels{display:flex;justify-content:center;align-items:center;gap:26px;padding:34px 0 6px;color:var(--ink)}
+  .wheels svg{height:26px;width:auto;opacity:.85}
+  .wheels .cap{font-family:'Oswald',sans-serif;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-soft)}
+
+  section{padding:44px 0}
+  section + section{border-top:1px solid var(--rule)}
+
+  /* ---------- timetable ---------- */
+  .tt{
+    border:2px solid var(--ink);background:#FBF6EA;
+    box-shadow:6px 6px 0 var(--paper-deep);
+  }
+  .tt-head{
+    display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;
+    background:var(--ink);color:var(--paper);padding:12px 18px;
+    font-family:'Oswald',sans-serif;letter-spacing:.14em;text-transform:uppercase;font-size:.85rem;
+  }
+  .tt-head b{color:var(--armour);letter-spacing:.2em}
+  table.sched{width:100%;border-collapse:collapse}
+  table.sched th{
+    font-family:'Oswald',sans-serif;font-weight:600;font-size:.72rem;
+    letter-spacing:.18em;text-transform:uppercase;text-align:left;
+    padding:10px 18px;border-bottom:2px solid var(--ink);color:var(--ink-soft);
+  }
+  table.sched td{padding:13px 18px;border-bottom:1px solid var(--rule);vertical-align:top}
+  table.sched tr:last-child td{border-bottom:none}
+  td.time{
+    font-family:'Oswald',sans-serif;font-weight:600;font-size:1rem;white-space:nowrap;width:112px;
+  }
+  td.time small{display:block;font-weight:400;font-size:.68rem;letter-spacing:.1em;color:var(--ink-soft);text-transform:uppercase}
+  td.what b{font-weight:600}
+  td.what .note{display:block;color:var(--ink-soft);font-size:.95rem}
+  tr.anchor td{background:rgba(255,181,18,.16)}
+  tr.anchor td.time{color:var(--up-red)}
+  .tt-foot{padding:10px 18px;font-size:.85rem;color:var(--ink-soft);border-top:2px solid var(--ink);font-family:'Oswald',sans-serif;letter-spacing:.06em}
+
+  /* ---------- roster ---------- */
+  .roster{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+  .car{
+    border:2px solid var(--ink);background:#FBF6EA;padding:16px 18px;
+    box-shadow:4px 4px 0 var(--paper-deep);
+  }
+  .car .tag{
+    display:inline-block;font-family:'Oswald',sans-serif;font-weight:600;font-size:.7rem;
+    letter-spacing:.22em;text-transform:uppercase;background:var(--armour);padding:3px 9px;margin-bottom:10px;
+  }
+  .car p{font-size:1.02rem}
+  .car .from{font-size:.85rem;color:var(--ink-soft);font-style:italic;margin-top:4px}
+
+  /* ---------- stops ---------- */
+  .stopnum{
+    font-family:'Alfa Slab One',serif;color:var(--paper);background:var(--up-red);
+    display:inline-flex;align-items:center;justify-content:center;
+    width:46px;height:46px;font-size:1.4rem;margin-right:12px;flex:none;
+  }
+  .stophead{display:flex;align-items:center;margin-bottom:6px}
+  .addr{
+    font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.08em;
+    color:var(--ink-soft);text-transform:uppercase;margin-bottom:14px;
+  }
+  .two-col{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:start}
+  .figure{border:2px solid var(--ink);background:#fff;box-shadow:6px 6px 0 var(--paper-deep)}
+  .figure img{background:#5B564E;}
+  .figure img.x{width:100%;height:300px;object-fit:cover}
+  .figure figcaption{
+    padding:8px 12px;font-family:'Oswald',sans-serif;font-size:.68rem;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+    border-top:2px solid var(--ink);
+  }
+  .figure figcaption a{color:inherit}
+  .cards{display:grid;gap:12px;margin-top:16px}
+  .pcard{border-left:4px solid var(--armour);background:#FBF6EA;padding:12px 16px}
+  .pcard b{font-weight:600}
+  .pcard span{display:block;font-family:'Oswald',sans-serif;font-size:.78rem;letter-spacing:.08em;color:var(--ink-soft);text-transform:uppercase;margin-top:2px}
+
+  .callout{
+    border:2px dashed var(--up-red);background:rgba(186,12,47,.05);
+    padding:18px 20px;margin-top:22px;
+  }
+  .callout .ttl{font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.8rem;color:var(--up-red);margin-bottom:6px}
+
+  .tip{
+    border:2px solid var(--ink);background:var(--armour);
+    padding:16px 20px;margin-top:22px;box-shadow:5px 5px 0 var(--paper-deep);
+  }
+  .tip .ttl{font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.8rem;margin-bottom:6px}
+
+  /* ---------- rail map ---------- */
+  .mapbox{border:2px solid var(--ink);background:#FBF6EA;box-shadow:6px 6px 0 var(--paper-deep);padding:8px 6px 2px;margin-top:26px}
+  .mapbox svg{width:100%;height:auto;display:block}
+  .maplabel{font-family:'Oswald',sans-serif;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);padding:6px 12px 10px;border-top:2px solid var(--ink);margin-top:6px}
+
+  /* ---------- tracker ---------- */
+  .tracker{
+    background:var(--ink);color:var(--paper);
+    border:2px solid var(--ink);box-shadow:8px 8px 0 var(--armour);
     display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center;
     padding:28px 30px;
   }
